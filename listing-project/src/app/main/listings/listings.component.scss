@@ -1,0 +1,14 @@
+section {
+  display: flex;
+
+  app-listing-item {
+    width: 25%;
+    margin-right: 10px;
+  }
+}
+
+.logout
+{
+  float: right;
+  text-align: right;
+}

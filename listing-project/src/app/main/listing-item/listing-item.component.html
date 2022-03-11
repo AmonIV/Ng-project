@@ -1,0 +1,30 @@
+<article>
+  <h3> {{ listing.title }} </h3>
+
+  <p>
+    {{ listing.owner }}
+  </p>
+
+  <p>
+    {{ listing.category }}
+  </p>
+
+  <p>
+    {{ listing.desc }}
+  </p>
+
+  <p>
+    {{ listing.type }}
+  </p>
+
+  <p>
+    Likes: {{listing.likedBy.length}}
+  </p>
+
+  <div>
+    <button [disabled] = "alreadyLiked || dbAlreadyLiked" *ngIf = "loggedUser.role === 'user'" (click)="onClick()">Like</button>
+    <a *ngIf = "loggedUser.id === listing.ownerID" [routerLink]="['/listings', 'edit', listing.id]">Edit</a>
+    <button *ngIf = "loggedUser.id === listing.ownerID" (click)="onDelete()">Delete</button>
+  </div>
+</article>
+

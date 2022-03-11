@@ -1,0 +1,43 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title</label>
+    <input type="text"
+           id="title"
+           name="title"
+           required
+           minlength="30"
+           [(ngModel)]="listing.title"
+           #titleControl="ngModel">
+
+    <small *ngIf="titleControl.touched && titleControl.invalid && titleControl.errors?.required">
+      This field is required
+    </small>
+
+    <small *ngIf="titleControl.touched && titleControl.invalid && titleControl.errors.minlength">
+      This field should contain at least {{ titleControl.errors.minlength.requiredLength }} characters.
+      Currently they are {{ titleControl.errors.minlength.actualLength }}
+    </small>
+  </div>
+
+  <div>
+    <label for="category">Category</label>
+    <input type="text"
+           id="category"
+           name="category"
+           [(ngModel)]="listing.category"
+           ngModel>
+  </div>
+
+  <div>
+    <label for="desc">Description</label>
+    <input type="text"
+           id="desc"
+           name="desc"
+           [(ngModel)]="listing.desc"
+           ngModel>
+  </div>
+
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>

@@ -1,0 +1,33 @@
+<h3>Listings List</h3>
+
+<div style = "padding: 10px">
+  <a style = "padding-left: 10px" class="logout" (click) = "logout()" routerLink="/login">
+    Logout
+  </a>
+  <a class="logout" (click) = "delete()" routerLink="/login">
+    Delete Account
+  </a>
+</div>
+
+
+<div>
+  <a *ngIf = "loggedUser.role === 'organisation'" routerLink="/listings/create">Create new</a>
+</div>
+
+
+
+<p>Ahoy,  {{ loggedUser.username || '-' }}</p>
+
+<a [routerLink] = "['/edit',loggedUser.id]">Edit Profile</a>
+
+<section>
+  <div *ngIf="errorMessage">{{errorMessage}}</div>
+
+  <app-listing-item *ngFor="let listing of listings; let i = index"
+                 [listing]="listing"
+                 [position]="i"
+                 [loggedUser]="loggedUser"
+                 (listingClicked)="onMarkAsLiked($event)"
+                 (listingDeleted)="onListingDelete($event)"></app-listing-item>
+</section>
+

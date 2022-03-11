@@ -1,0 +1,49 @@
+<div>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div>
+      <input type="text"
+             placeholder="Username"
+             formControlName="username">
+      <small *ngIf="usernameFormControl?.touched && usernameFormControl?.invalid && usernameFormControl?.errors?.['required']">
+        This field is required
+      </small>
+    </div>
+
+    <div>
+      <input type="password"
+             placeholder="Password"
+             formControlName="password">
+      <small *ngIf="passwordFormControl?.touched && passwordFormControl?.invalid && passwordFormControl?.errors?.['required']">
+        This field is required
+      </small>
+    </div>
+
+    <div>
+      <input type="text"
+             placeholder="Email"
+             formControlName="email">
+      <small *ngIf="emailFormControl?.touched && emailFormControl?.invalid && emailFormControl?.errors?.['required']">
+        This field is required
+      </small>
+    </div>
+
+    <datalist id="options">
+      <option value="user"></option>>
+      <option value="organisation"></option>>
+    </datalist>
+
+    <div>
+      <input list="options"
+             placeholder="type"
+             formControlName="type">
+      <small *ngIf="typeFormControl?.touched && typeFormControl?.invalid && typeFormControl?.errors?.['required']">
+        This field is required
+      </small>
+    </div>
+
+    <div>
+      <button *ngIf = "!user.id" type="submit">Register</button>
+      <button *ngIf = "user.id" type="submit">Edit</button>
+    </div>
+  </form>
+</div>
